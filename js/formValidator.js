@@ -62,7 +62,12 @@ export default class FormValidator {
 
     updateErrorElement(input, message) {
         const logElement = input.closest('li').querySelector('.log')
-        logElement.textContent = message
+        if (message !== '') {
+            logElement.textContent = message
+            logElement.classList.add('active')
+        } else {
+            logElement.classList.remove('active')
+        }
     }
 
 }

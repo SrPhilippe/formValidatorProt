@@ -1,19 +1,21 @@
 :root {
-    --font-family: 'Ubuntu', sans-serif;
+  --tranFadeNormal: .4s;
+  --font-family: 'Ubuntu', sans-serif;
 }
+
 ::-webkit-scrollbar {
-    background-color: initial;
-    width: initial;
+  background-color: initial;
+  width: initial;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: initial;
-    border-radius: initial;
+  background-color: initial;
+  border-radius: initial;
 }
 
 ::selection {
-    background-color: initial;
-    color: initial;
+  background-color: initial;
+  color: initial;
 }
 
 html {
@@ -36,7 +38,7 @@ a {
 }
 
 textarea {
-    font-family: var(--font-family);
+  font-family: var(--font-family);
 }
 
 .container {
@@ -46,5 +48,5 @@ textarea {
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
