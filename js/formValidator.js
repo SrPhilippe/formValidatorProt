@@ -40,7 +40,7 @@ export default class FormValidator {
 
         if (input.value.length === 0) { rules.message = '' }
 
-        this.updateErrorElement(event.currentTarget, rules.message)
+        this.updateElementError(event.currentTarget, rules.message)
     }
 
     get hasErrors() {
@@ -60,7 +60,7 @@ export default class FormValidator {
         }
     }
 
-    updateErrorElement(input, message) {
+    updateElementError(input, message) {
         const logElement = input.closest('li').querySelector('.log')
         if (message !== '') {
             logElement.textContent = message
