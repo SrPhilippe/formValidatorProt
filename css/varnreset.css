@@ -1,0 +1,50 @@
+:root {
+    --font-family: 'Ubuntu', sans-serif;
+}
+::-webkit-scrollbar {
+    background-color: initial;
+    width: initial;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: initial;
+    border-radius: initial;
+}
+
+::selection {
+    background-color: initial;
+    color: initial;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+a {
+  display: inline-block;
+}
+
+textarea {
+    font-family: var(--font-family);
+}
+
+.container {
+  max-width: 1124px;
+  margin-block: auto;
+  width: 100%;
+}
+
+ul {
+    list-style: none;
+}

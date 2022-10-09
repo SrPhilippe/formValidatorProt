@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Form Validator test</title>
+</head>
+<body>
+
+    
+    <div class="main">
+        <form class="contact-form" action="#" method="post">
+            <ul>
+                <li>
+                    <input type="hidden">
+                    <input type="hidden">
+                </li>
+                <li>
+                    <label for="input_username">Nome</label>
+                    <input id="input_username" data-input="username" type="text" placeholder="Seu Nome">
+                </li>
+                <li>
+                    <label for="input_mail">E-mail</label>
+                    <input id="input_mail" data-input="mail" type="mail" placeholder="usuario@email.com">
+                </li>
+                <li>
+                    <label for="input_message">Mensagem</label>
+                    <textarea id="input_message" data-input="message" placeholder="Digite sua mensagem..."></textarea>
+                </li>
+                <li>
+                    <input type="submit" value="Enviar">
+                </li>
+            </ul>
+        </form>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/main.js" defer type="module"></script>
+</body>
+</html>
