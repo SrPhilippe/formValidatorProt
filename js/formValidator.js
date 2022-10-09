@@ -1,27 +1,57 @@
 export default class FormValidator {
     constructor(form) {
-        this.form = document.querySelector(form)
-        this.inputWithErrors = new Set()
+        this._form = document.querySelector(form)
+        this._inputWithErrors = new Set()
 
-        this.form.addEventListener('submit', e => {
+        this._form.addEventListener('submit', e => {
             e.preventDefault()
-
-            if (!this.InputWithErrors) {
+            if (!this.hasErrors) {
                 // Submit
+                console.log('the form was submitted')
             }
         })
     }
 
-    regInput(selector, callback) { // Register
-        const inputField = this.form.querySelector(`[data-input="${selector}"]`)
-        inputField.addEventListener('input', e => this.checkErrors(e))
-        this.checkElementError(inputField)
+    regInput(selector, rules) { // Register
+        const inputField = this._form.querySelector(`[data-input="${selector}"]`)
+        this._inputWithErrors.add(inputField)
+        rules.pattern = rules.pattern ?? /[^]*/ // ? If the pattern is null it will match any string
+        rules.message = ''
+        inputField.addEventListener('input', ev => this.checkErrors(ev, inputField, rules))
+        this.createElementError(inputField)
     }
 
-    checkElementError(input) { // This function verifies if the log from the input already exists
+    checkErrors(event, input, rules) {
+        if (!input.value.match(rules.pattern)) {
+            this._inputWithErrors.add(input)
+            rules.message =
+                `O padrão de ${'email'} digitado não é válido.`
+        } else {
+
+            if (input.value.length < rules.min || input.value.length > rules.max) {
+                this._inputWithErrors.add(input)
+                rules.message =
+                    `Pode conter entre ${rules.min} e ${rules.max} caracteres.`
+            } else {
+                this._inputWithErrors.delete(input)
+                rules.message = ''
+            }
+        }
+
+        if (input.value.length === 0) { rules.message = '' }
+
+        this.updateErrorElement(event.currentTarget, rules.message)
+    }
+
+    get hasErrors() {
+        return this._inputWithErrors.size > 0
+    }
+
+    createElementError(input) {
+        // This function verifies whether the log element exists or not
 
         const logElement = input.closest('li').querySelector('.log') ?? false
-                        // select the closest <li> ancestor
+        // select the closest <li> ancestor
 
         if (!logElement) {
             const log = document.createElement('p')
@@ -30,12 +60,9 @@ export default class FormValidator {
         }
     }
 
-    checkErrors(event) {
-        console.log(event.currentTarget)
-    }
-
-    get hasErrors() {
-        return this.inputWithErrors.size > 0
+    updateErrorElement(input, message) {
+        const logElement = input.closest('li').querySelector('.log')
+        logElement.textContent = message
     }
 
 }
